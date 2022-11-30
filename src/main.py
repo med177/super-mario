@@ -1,6 +1,11 @@
+# https://www.youtube.com/watch?v=YWN8GcmJ-jA&t=1384s
+
 import pygame
 from typing import List
+
 from map import *
+from tiles import *
+
 
 pygame.init()
 
@@ -10,7 +15,10 @@ fpsClock = pygame.time.Clock()
 screen = pygame.display.set_mode((screenWidth, screenHeight))
 pygame.display.set_caption("Space Invaders")
 
-# Player
+# Tile map
+testTileGroup = pygame.sprite.Group(Tile(0, 0, 32, 32, "red"))
+
+
 playerImg = pygame.image.load("src/img/mario.png")
 playerX = 370
 playerY = 480
@@ -40,6 +48,9 @@ while running:
     playerX += playerX_change
 
     player(playerX, playerY)
+
+    testTileGroup.draw(screen)
+
     pygame.display.update()
     fpsClock.tick(FPS)
 
